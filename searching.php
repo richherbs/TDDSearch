@@ -4,8 +4,8 @@ function linearSearch (int $searchTerm, array $searchArea)
 {
     foreach ($searchArea as $key => $value) {
         if ($value == $searchTerm) return $key;
-        return false;
     }
+    return false;
 }
 
 function binarySearch(int $searchTerm, array $searchArea)
@@ -18,20 +18,20 @@ function binarySearch(int $searchTerm, array $searchArea)
       
     while ($start <= $end) { 
           
-        $median = floor(($start + $end) / 2); 
+        $medianKey = floor(($start + $end) / 2); 
    
-        if($searchArea[$median] == $searchTerm) { 
+        if($searchArea[$medianKey] == $searchTerm) { 
 
-            return $median; 
+            return $medianKey; 
         } 
   
-        if ($searchTerm < $searchArea[$median]) { 
+        if ($searchTerm < $searchArea[$medianKey]) { 
 
-            $end = $median -1; 
+            $end = $medianKey -1; 
         } 
         else { 
 
-            $start = $median + 1; 
+            $start = $medianKey + 1; 
         } 
     } 
       
