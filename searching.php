@@ -39,28 +39,26 @@ function binarySearch(int $searchTerm, array $searchArea)
 
 }
 
-// function recursiveBinarySearch(int $searchTerm, array $searchArea, int $start, int $end)
-// {
+function recursiveBinarySearch(int $searchTerm, array $searchArea, int $start, int $end)
+{
+    if ($end < $start) return false;
 
-//     if (count($searchArea) === 0) return false;
+    $medianKey = floor(($start + $end) / 2); 
 
-//     $medianKey = floor(($start + $end) / 2); 
+    if($searchArea[$medianKey] == $searchTerm) {
+        
+        return $medianKey;
 
-//     if($searchArea[$medianKey] == $searchTerm) return $medianKey; 
+    } else if ($searchTerm < $searchArea[$medianKey]) {
+        
+        recursiveBinarySearch($searchTerm, $searchArea, $start, $medianKey -1);
 
+    } else if ($searchTerm > $searchArea[$medianKey]) {
+        
+        recursiveBinarySearch($searchTerm, $searchArea, $medianKey +1, $end);
 
-      
-//     while ($start <= $end) { 
-//         if ($searchTerm < $searchArea[$medianKey]) { 
-
-//             $end = $medianKey -1; 
-//         } 
-//         else { 
-
-//             $start = $medianKey + 1; 
-//         } 
-//     } 
-// }
+    }
+}
 
 $arr1 = [1,5,34,54,78,562,655,864,6543,6632,7777,7778,46266,24562];
 
@@ -71,18 +69,18 @@ $before = microtime(true);
 $result = binarySearch(24562, $arr1);
 
 $after = microtime(true);
-echo 'Time taken (binary search):' . ($after-$before) . "result: " . $result . '<br>';
+echo 'Time taken (binary search): ' . ($after-$before) . " result: " . $result . '<br>';
 
 $before = microtime(true);
 
 $result = linearSearch(34, $arr1);
 
 $after = microtime(true);
-echo 'Time taken (linear search):' . ($after-$before) . "result: " . $result . '<br>';
+echo 'Time taken (linear search): ' . ($after-$before) . " result: " . $result . '<br>';
 
-// $before = microtime(true);
+$before = microtime(true);
 
-// $result = recursiveBinarySearch(34, $arr1, 0, count($arr1) - 1);
+$result = recursiveBinarySearch(34, $arr1, 0, count($arr1) - 1);
 
-// $after = microtime(true);
-// echo 'Time taken (linear search):' . ($after-$before) . "result: " . $result . '<br>';
+$after = microtime(true);
+echo 'Time taken (recursive binary search): ' . ($after-$before) . " result: " . $result . '<br>';
