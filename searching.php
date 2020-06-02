@@ -13,7 +13,6 @@ function binarySearch(int $searchTerm, array $searchArea)
 
     if (count($searchArea) === 0) return false;
 
-    sort($searchArea);
     $start = 0;
     $end = count($searchArea) - 1; 
       
@@ -64,6 +63,8 @@ function binarySearch(int $searchTerm, array $searchArea)
 // }
 
 $arr1 = [1,5,34,54,78,562,655,864,6543,6632,7777,7778,46266,24562];
+
+sort($arr1);
  
 $before = microtime(true);
 
